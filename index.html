@@ -3,10 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Game of Life</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <title>The Game of Life</title>
 </head>
 <body>
 
-    
+    <div class="main-container">
+        <div class="input-container">
+            <input type="number" placeholder="Rows">
+            <input type="number" placeholder="Columns">
+        </div>
+        <div class="button-container">
+            <button class="mainBtn" id="start">start</button>
+            <button class="mainBtn" id="end">end</button>
+            <button class="mainBtn" id="clear">clear</button>
+        </div>
+    </div>
+
+    <div id="containerOfGame"></div>
 </body>
 </html>
