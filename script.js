@@ -1,9 +1,14 @@
-let rows = document.querySelector("#rows").value;
-let cols = document.querySelector("#columns").value;
 const btnStart = document.querySelector("#start")
+const btnClear = document.querySelector('#clear')
+const btnCreate = document.querySelector('#create')
+
+btnCreate.addEventListener('click', createTable);
+btnClear.addEventListener('click', clearTable);
 
 function createTable() {
-    let gameContainer = document.getElementById("containerOfGame");
+    let rows = document.querySelector("#rows").value;
+    let cols = document.querySelector("#columns").value;
+    let gameContainer = document.querySelector("#containerOfGame");
     if (!gameContainer) {
         console.error("Problem: no div for the grid table!");
     }
@@ -22,4 +27,8 @@ function createTable() {
     gameContainer.appendChild(table);
 }
 
-window.onload = initialize;
+function clearTable() {
+    let gameContainer = document.querySelector("#containerOfGame");
+    if (gameContainer) {
+        gameContainer.innerHTML = ""}
+}
