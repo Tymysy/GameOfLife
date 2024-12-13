@@ -1,9 +1,22 @@
 const btnStart = document.querySelector("#start")
-const btnClear = document.querySelector('#clear')
+const btnDelete = document.querySelector('#delete')
 const btnCreate = document.querySelector('#create')
+const btnClear = document.querySelector('#clear')
+const playing = false;
 
 btnCreate.addEventListener('click', createTable);
-btnClear.addEventListener('click', clearTable);
+btnDelete.addEventListener('click', deleteTable);
+btnStart.addEventListener('click', startButtonHandler);
+btnClear.addEventListener('click', clearButtonHandler);
+
+function cellClickHandler() {
+    let classes = this.getAttribute('class');
+    if (classes.indexOf('live') > -1) {
+      this.setAttribute('class', 'dead');
+    } else {
+      this.setAttribute('class', 'live');
+    }
+  }
 
 function createTable() {
     let rows = document.querySelector("#rows").value;
@@ -20,6 +33,7 @@ function createTable() {
             let cell = document.createElement("td");
             cell.setAttribute("id", i + "_" + j);
             cell.setAttribute("class", "dead");
+            cell.onclick = cellClickHandler;
             tr.appendChild(cell);
         }
         table.appendChild(tr);
@@ -27,8 +41,30 @@ function createTable() {
     gameContainer.appendChild(table);
 }
 
-function clearTable() {
+function deleteTable() {
     let gameContainer = document.querySelector("#containerOfGame");
     if (gameContainer) {
         gameContainer.innerHTML = ""}
 }
+
+function clearButtonHandler() {
+    playing = false;
+    btnStart.innerHTML = "start"
+}
+
+function startButtonHandler() {
+    if (playing) {
+      console.log('Pause the Game');
+      playing = false;
+      btnStart.innerHTML = 'continue';
+    } else {
+      console.log('Cont the game');
+      playing = true;
+      btnStart.innerHTML = 'pause';
+      play();
+    }
+  }
+  
+  function play() {
+      console.log("Play the game")
+  }
