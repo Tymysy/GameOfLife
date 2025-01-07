@@ -1,32 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+<html>
+  <head>
+    <meta charset="UTF-8" />
     <title>The Game of Life</title>
-</head>
-<body>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div id="gridContainer"></div>
 
-    <div class="main-container">
-        <div class="input-container">
-            <input id="rows" type="number" placeholder="Rows">
-            <input id="columns" type="number" placeholder="Columns">
-        </div>
-        <div class="button-container">
-            <button class="mainBtn" id="create">create</button>
-            <button class="mainBtn" id="delete">delete</button>
-        </div>
+    <div class="controls">
+      <button id="start">start</button>
+      <button id="clear">clear</button>
+      <button id="random">random</button>
     </div>
-
-    <div class="buttons">
-        <button class="mainBtn" id="start">start</button>
-        <button class="mainBtn" id="end">end</button>
-        <button class="mainBtn" id="clear">clear</button>
-    </div>
-
-    <div id="containerOfGame"></div>
 
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
