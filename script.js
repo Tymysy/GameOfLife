@@ -80,17 +80,35 @@ function handleSizeChange() {
   let selectedSize = document.querySelector('input[name="size"]:checked').value;
 
   if (selectedSize === 'small') {
-    rows = 16;
-    cols = 16;
-    createTable(24);
+    if (window.innerWidth <= 480) {
+      rows = 18;
+      cols = 18;
+      createTable(28);
+    } else {
+      rows = 16;
+      cols = 16;
+      createTable(24);
+    }
   } else if (selectedSize === 'medium') {
-    rows = 24;
-    cols = 24;
-    createTable(20);
+    if (window.innerWidth <= 480) {
+      rows = 24;
+      cols = 24;
+      createTable(16);
+    } else {
+      rows = 24;
+      cols = 24;
+      createTable(20);
+    }
   } else if (selectedSize === 'large') {
-    rows = 48;
-    cols = 64;
-    createTable(16);
+    if (window.innerWidth <= 480) {
+      rows = 32;
+      cols = 48;
+      createTable(14);
+    } else {
+      rows = 48;
+      cols = 64;
+      createTable(16);
+    }
   }
   initializeGrids();
   resetGrids();
