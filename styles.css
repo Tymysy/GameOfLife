@@ -11,7 +11,7 @@ body {
 }
 
 h1 {
-  font-size: 2rem;
+  font-size: 1.5rem;
   color: black;
   font-weight: 700;
   margin-bottom: 0px;
@@ -20,7 +20,7 @@ h1 {
 #gridContainer {
   display: flex;
   justify-content: center;
-  margin: 20px 0;
+  margin: 0px 0px 20px 0px;
 }
 
 table {
@@ -46,6 +46,22 @@ td {
   background-color: red;
 }
 
+#panelcontainer {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 10px;
+  left: 10px;
+  background-color: transparent;
+  backdrop-filter: blur(5px);
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
 button {
   background-color: red;
   color: white;
@@ -60,12 +76,17 @@ button {
 }
 
 button:hover {
-  background-color: white;
+  background-color: #7cfc00;
   color: black;
-  border: 2px solid black;
 }
 
 #stats {
   font-size: 20px;
-  margin: 10px 0;
+}
+
+form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0px 10px 0px;
 }

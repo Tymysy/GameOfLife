@@ -1,5 +1,5 @@
-const rows = 24;
-const cols = 24;
+let rows = 24;
+let cols = 24;
 
 let playing = false;
 
@@ -12,6 +12,8 @@ let reproductionTime = 200;
 let liveCellCount = 0;
 
 function initializeGrids() {
+  grid = new Array(rows);
+  nextGrid = new Array(rows);
   for (let i = 0; i < rows; i++) {
     grid[i] = new Array(cols).fill(0);
     nextGrid[i] = new Array(cols).fill(0);
@@ -40,12 +42,13 @@ function cellClickHandler() {
   updateStats();
 }
 
-function createTable() {
-  let gridContainer = document.getElementById('gridContainer');
+function createTable(cellSize = 20) {
+  let gridContainer = document.querySelector('#gridContainer');
   if (!gridContainer) {
     console.error('Problem: no div for the grid table!');
     return;
   }
+  gridContainer.innerHTML = '';
   let table = document.createElement('table');
   for (let i = 0; i < rows; i++) {
     let tr = document.createElement('tr');
@@ -53,6 +56,8 @@ function createTable() {
       let cell = document.createElement('td');
       cell.setAttribute('id', `${i}_${j}`);
       cell.setAttribute('class', 'dead');
+      cell.style.width = `${cellSize}px`;
+      cell.style.height = `${cellSize}px`;
       cell.onclick = cellClickHandler;
       tr.appendChild(cell);
     }
@@ -65,6 +70,31 @@ function setupControlButtons() {
   document.getElementById('start').onclick = startButtonHandler;
   document.getElementById('clear').onclick = clearButtonHandler;
   document.getElementById('random').onclick = randomButtonHandler;
+
+  document.querySelectorAll('input[name="size"]').forEach(checkbox => {
+    checkbox.onchange = handleSizeChange;
+  });
+}
+
+function handleSizeChange() {
+  let selectedSize = document.querySelector('input[name="size"]:checked').value;
+
+  if (selectedSize === 'small') {
+    rows = 16;
+    cols = 16;
+    createTable(24);
+  } else if (selectedSize === 'medium') {
+    rows = 24;
+    cols = 24;
+    createTable(20);
+  } else if (selectedSize === 'large') {
+    rows = 48;
+    cols = 64;
+    createTable(16);
+  }
+  initializeGrids();
+  resetGrids();
+  updateStats();
 }
 
 function randomButtonHandler() {
@@ -177,7 +207,7 @@ function updateStats() {
 }
 
 function initialize() {
-  createTable();
+  createTable(20);
   initializeGrids();
   resetGrids();
   setupControlButtons();
