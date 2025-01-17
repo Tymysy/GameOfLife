@@ -10,7 +10,7 @@ body {
   min-height: 100vh;
 }
 
-h1 {
+#Name {
   font-size: 1.5rem;
   color: black;
   font-weight: 700;
@@ -89,4 +89,33 @@ form {
   justify-content: center;
   align-items: center;
   margin: 10px 0px 10px 0px;
+}
+
+#colors {
+  display: flex;
+  justify-content: space-between;
+}
+
+#ver1, #ver2, #ver3 {
+  width: 20px;
+  height: 20px;
+  margin-left: 5px;
+  border-radius: 20px;
+  transition: .2s;
+}
+
+#ver1:hover, #ver2:hover, #ver3:hover {
+  box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.5);
+}
+
+#ver1 {
+  background-color: black;
+}
+
+#ver2 {
+  background-color: aqua;
+}
+
+#ver3 {
+  background-color: white;
 }

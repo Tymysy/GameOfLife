@@ -136,6 +136,18 @@ function clearButtonHandler() {
   updateStats();
 }
 
+function colorChoose() {
+  let darktheme = document.querySelector('#ver1')
+  let aquatheme = document.querySelector('#ver2')
+  let whitetheme = document.querySelector('#ver3')
+  let h1element = document.querySelector('#Name')
+  darktheme.addEventListener("click", () => {
+  document.body.style.backgroundColor = "black";
+  h1element.style.color = "white"
+  
+  })
+}
+
 function startButtonHandler() {
   if (playing) {
     playing = false;
@@ -230,6 +242,7 @@ function initialize() {
   resetGrids();
   setupControlButtons();
   updateStats();
+  colorChoose();
 }
 
 window.onload = initialize;
