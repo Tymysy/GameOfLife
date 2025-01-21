@@ -92,18 +92,21 @@ function handleSizeChange() {
     cols = 64;
     createTable(16);
   }
-}
+
   initializeGrids();
   resetGrids();
   updateView();
   updateStats();
+}
 
 function randomButtonHandler() {
   for (let i = 0; i < rows; i++) {
     for (let j = 0; j < cols; j++) {
       grid[i][j] = Math.random() > 0.5 ? 1 : 0;
       let cell = document.getElementById(`${i}_${j}`);
-      cell.setAttribute('class', grid[i][j] ? 'live' : 'dead');
+      if (cell) {
+        cell.setAttribute('class', grid[i][j] ? 'live' : 'dead');
+      }
     }
   }
   updateStats();
@@ -186,6 +189,11 @@ function updateView() {
   for (let i = 0; i < rows; i++) {
     for (let j = 0; j < cols; j++) {
       let cell = document.getElementById(`${i}_${j}`);
+      if (!cell) {
+        console.error(`Cell ${i}_${j} not found`);
+        continue;
+      }
+
       if (grid[i][j] === 0) {
         cell.setAttribute('class', 'dead');
       } else {
@@ -220,8 +228,6 @@ function colorChoose() {
     body.classList.remove('theme-dark', 'theme-aqua');
   });
 }
-
-
 
 function updateStats() {
   liveCellCount = grid.flat().filter(cell => cell === 1).length;
