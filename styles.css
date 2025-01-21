@@ -34,18 +34,6 @@ td {
   transition: background-color 0.3s ease;
 }
 
-.dead {
-  background-color: white;
-}
-
-.live {
-  background-color: #7cfc00;
-}
-
-.old-live {
-  background-color: red;
-}
-
 #panelcontainer {
   position: fixed;
   display: flex;
@@ -96,7 +84,7 @@ form {
   justify-content: space-between;
 }
 
-#ver1, #ver2, #ver3 {
+#dark-theme, #aqua-theme, #light-theme {
   width: 20px;
   height: 20px;
   margin-left: 5px;
@@ -104,18 +92,62 @@ form {
   transition: .2s;
 }
 
-#ver1:hover, #ver2:hover, #ver3:hover {
+#dark-theme:hover, #aqua-theme:hover, #light-theme:hover {
   box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.5);
 }
 
-#ver1 {
+#dark-theme {
   background-color: black;
 }
 
-#ver2 {
+#aqua-theme {
   background-color: aqua;
 }
 
-#ver3 {
+#light-theme {
   background-color: white;
+}
+
+.theme-dark {
+  background-color: black;
+  color: white;
+}
+
+.theme-aqua {
+  background-color: aqua;
+  color: black;
+}
+.theme-light {
+  background-color: white;
+  color: black;
+}
+
+.live {
+  background-color: #7cfc00;
+}
+.old-live {
+  background-color: red;
+}
+.dead {
+  background-color: white;
+}
+
+.theme-dark .live {
+  background-color: black;
+}
+.theme-dark .old-live {
+  background-color: darkred;
+}
+.theme-dark .dead {
+  background-color: white;
+}
+
+.theme-aqua .live {
+  background-color: blue;
+}
+.theme-aqua .old-live {
+  background-color: darkblue;
+}
+.theme-aqua .dead {
+  background-color: lightblue;
 }

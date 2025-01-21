@@ -80,40 +80,23 @@ function handleSizeChange() {
   let selectedSize = document.querySelector('input[name="size"]:checked').value;
 
   if (selectedSize === 'small') {
-    if (window.innerWidth <= 480) {
-      rows = 18;
-      cols = 18;
-      createTable(28);
-    } else {
-      rows = 16;
-      cols = 16;
-      createTable(24);
-    }
+    rows = 16;
+    cols = 16;
+    createTable(28);
   } else if (selectedSize === 'medium') {
-    if (window.innerWidth <= 480) {
-      rows = 24;
-      cols = 24;
-      createTable(16);
-    } else {
-      rows = 24;
-      cols = 24;
-      createTable(20);
-    }
+    rows = 24;
+    cols = 24;
+    createTable(20);
   } else if (selectedSize === 'large') {
-    if (window.innerWidth <= 480) {
-      rows = 32;
-      cols = 48;
-      createTable(14);
-    } else {
-      rows = 48;
-      cols = 64;
-      createTable(16);
-    }
+    rows = 48;
+    cols = 64;
+    createTable(16);
   }
+}
   initializeGrids();
   resetGrids();
+  updateView();
   updateStats();
-}
 
 function randomButtonHandler() {
   for (let i = 0; i < rows; i++) {
@@ -134,18 +117,6 @@ function clearButtonHandler() {
   cells.forEach(cell => cell.setAttribute('class', 'dead'));
   resetGrids();
   updateStats();
-}
-
-function colorChoose() {
-  let darktheme = document.querySelector('#ver1')
-  let aquatheme = document.querySelector('#ver2')
-  let whitetheme = document.querySelector('#ver3')
-  let h1element = document.querySelector('#Name')
-  darktheme.addEventListener("click", () => {
-  document.body.style.backgroundColor = "black";
-  h1element.style.color = "white"
-  
-  })
 }
 
 function startButtonHandler() {
@@ -228,6 +199,29 @@ function updateView() {
     }
   }
 }
+
+function colorChoose() {
+  const darkThemeBtn = document.querySelector('#dark-theme');
+  const aquaThemeBtn = document.querySelector('#aqua-theme');
+  const lightThemeBtn = document.querySelector('#light-theme');
+  const body = document.body;
+
+  darkThemeBtn.addEventListener('click', () => {
+    body.classList.remove('theme-light', 'theme-aqua');
+    body.classList.add('theme-dark');
+  });
+
+  aquaThemeBtn.addEventListener('click', () => {
+    body.classList.remove('theme-light', 'theme-dark');
+    body.classList.add('theme-aqua');
+  });
+
+  lightThemeBtn.addEventListener('click', () => {
+    body.classList.remove('theme-dark', 'theme-aqua');
+  });
+}
+
+
 
 function updateStats() {
   liveCellCount = grid.flat().filter(cell => cell === 1).length;
