@@ -212,20 +212,32 @@ function colorChoose() {
   const darkThemeBtn = document.querySelector('#dark-theme');
   const aquaThemeBtn = document.querySelector('#aqua-theme');
   const lightThemeBtn = document.querySelector('#light-theme');
+  const h1 = document.querySelector('#Name')
+  const stats = document.querySelector('#stats')
+  const size = document.querySelector('#sizes')
   const body = document.body;
 
   darkThemeBtn.addEventListener('click', () => {
     body.classList.remove('theme-light', 'theme-aqua');
     body.classList.add('theme-dark');
+    h1.style.color = "white";
+    stats.style.color = "white";
+    size.style.color = "white";
   });
 
   aquaThemeBtn.addEventListener('click', () => {
     body.classList.remove('theme-light', 'theme-dark');
     body.classList.add('theme-aqua');
+    h1.style.color = "white";
+    stats.style.color = "white";
+    size.style.color = "white";
   });
 
   lightThemeBtn.addEventListener('click', () => {
     body.classList.remove('theme-dark', 'theme-aqua');
+    h1.style.color = "black";
+    stats.style.color = "black";
+    size.style.color = "black";
   });
 }
 
